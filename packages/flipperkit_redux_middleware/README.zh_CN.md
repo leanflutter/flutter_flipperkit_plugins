@@ -12,6 +12,7 @@
 开始之前确保你已安装：
 
 - 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
 - 已安装 [redux](https://github.com/johnpryan/redux.dart)
 
 ### 安装

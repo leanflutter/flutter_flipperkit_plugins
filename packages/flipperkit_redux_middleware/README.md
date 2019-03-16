@@ -12,6 +12,7 @@ English | [简体中文](./README.zh_CN.md)
 Before starting make sure you have:
 
 - Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- Installed [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
 - Installed [redux](https://github.com/johnpryan/redux.dart)
 
 ### Installation

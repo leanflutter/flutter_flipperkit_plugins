@@ -2,7 +2,7 @@
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
-[English](./README.zh_CN.md) | 简体中文
+[English](./README.md) | 简体中文
 
 ## 简介
 
