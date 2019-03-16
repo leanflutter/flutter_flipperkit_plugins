@@ -1,54 +1,64 @@
-# flipperkit_dio_interceptor
+# flipperkit_redux_middleware
 
-[![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor)
+[![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
-English | [简体中文](./README.zh_CN.md)
+[English](./README.md) | 简体中文
 
-## Getting Started
+## 快速开始
 
-### Prerequisites
+### 必备条件
 
-Before starting make sure you have:
+开始之前确保你已安装：
 
-- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- Installed [dio](https://github.com/flutterchina/dio)
+- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [redux](https://github.com/johnpryan/redux.dart)
 
-### Installation
+### 安装
 
-Add this to your package's pubspec.yaml file:
+添加以下内容到包的 pubspec.yaml 文件中：
 
 ```yaml
 dependencies:
-  flipperkit_dio_interceptor: ^0.0.1
+  flipperkit_redux_middleware: ^0.0.1
 ```
 
-You can install packages from the command line:
+您可以通过命令行安装软件包：
 
 ```bash
 $ flutter packages get
 ```
 
-### Usage
+### 用法
 
 ```dart
-import 'package:dio/dio.dart';
-import 'package:flipperkit_dio_interceptor/flipperkit_dio_interceptor.dart';
+import 'package:redux/redux.dart';
+import 'package:flipperkit_redux_middleware/flipperkit_redux_middleware.dart';
 
-void sendRequest() async {
-  Dio dio = new Dio();
-  dio.interceptors.add(FlipperKitDioInterceptor());
-  Response response = dio.get("https://example.com");
+void main() async {
+  final store = Store<int>(
+    appReducer,
+    initialState: 0,
+    middleware: []
+      ..add(new FlipperKitReduxMiddleware())
+  );
+
+  runApp(MyApp(
+    store: store
+  ));
 }
+
+...
+
 ```
 
-## Discussion
+## 探讨
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
+如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
-## License
+## 许可证
 
 ```
 MIT License

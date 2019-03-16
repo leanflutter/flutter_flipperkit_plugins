@@ -8,6 +8,15 @@
 
 Plugins for flutter flipperkit.
 
+## 插件
+
+这些是此代码库中的可用插件。
+
+| Plugin | Pub |
+|--------|-----|
+| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
+| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
+
 ## 探讨
 
 如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。

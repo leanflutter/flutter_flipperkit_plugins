@@ -8,6 +8,15 @@ English | [简体中文](./README.zh_CN.md)
 
 Plugins for flutter flipperkit.
 
+## Plugins
+
+These are the available plugins in this repository.
+
+| Plugin | Pub |
+|--------|-----|
+| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
+| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
+
 ## Discussion
 
 If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
