@@ -36,9 +36,9 @@ import 'package:redux/redux.dart';
 import 'package:flipperkit_redux_middleware/flipperkit_redux_middleware.dart';
 
 void main() async {
-  final store = Store<int>(
+  final store = Store<AppState>(
     appReducer,
-    initialState: 0,
+    initialState: AppState(),
     middleware: []
       ..add(new FlipperReduxMiddleware())
   );
