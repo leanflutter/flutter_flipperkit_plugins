@@ -17,4 +17,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_flipperkit: ^0.0.5
+  flutter_flipperkit: ^0.0.6

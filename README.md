@@ -15,6 +15,7 @@ These are the available plugins in this repository.
 | Plugin | Pub |
 |--------|-----|
 | [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
+| [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_fish_redux_middleware) |
 | [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
 
 ## Discussion

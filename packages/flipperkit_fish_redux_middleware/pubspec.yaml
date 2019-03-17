@@ -1,4 +1,4 @@
-name: flipperkit_dio_interceptor
+name: flipperkit_fish_redux_middleware
 description: A new Flutter package project.
 version: 0.0.1
 author: JianyingLi <lijy91@foxmail.com>
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  dio: ^2.0.14
+  fish_redux: ^0.1.2
   uuid: ^2.0.0
 
 dev_dependencies:

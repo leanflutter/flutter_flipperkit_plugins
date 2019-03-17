@@ -12,7 +12,9 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {
+    dynamic prevState = json.encode(store.state);
     next(action);
+    dynamic nextState = json.encode(store.state);
 
     if (_flipperReduxInspectorPlugin == null) {
       _flipperReduxInspectorPlugin =
@@ -20,11 +22,19 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
     }
 
     String uniqueId = _uuid.v4();
+
+    var payload;
+    try {
+       payload = json.encode(action);
+    } catch (e) {}
+    
     ActionInfo actionInfo = new ActionInfo(
       uniqueId: uniqueId,
       actionType: action.runtimeType.toString(),
       timeStamp: new DateTime.now().millisecondsSinceEpoch,
-      state: json.encode(store.state),
+      payload: payload,
+      prevState: prevState,
+      nextState: nextState,
     );
 
     _flipperReduxInspectorPlugin.report(actionInfo);
