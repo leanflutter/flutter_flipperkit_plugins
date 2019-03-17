@@ -13,7 +13,7 @@ Before starting make sure you have:
 
 - Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
 - Installed [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
-- Installed [redux](https://github.com/johnpryan/redux.dart)
+- Installed [fish-redux](https://github.com/alibaba/fish-redux)
 
 ### Installation
 
