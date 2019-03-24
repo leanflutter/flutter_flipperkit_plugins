@@ -21,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.1
+  flipperkit_redux_middleware: ^0.0.2
 ```
 
 您可以通过命令行安装软件包：
@@ -41,7 +41,12 @@ void main() async {
     appReducer,
     initialState: AppState(),
     middleware: []
-      ..add(new FlipperKitReduxMiddleware())
+      ..add(new FlipperKitReduxMiddleware(
+        // 可选，用于过滤 action types
+        filter: (actionType) {
+          return actionType.startsWith('\$');
+        }
+      ))
   );
 
   runApp(MyApp(
@@ -55,7 +60,7 @@ void main() async {
 
 ## 探讨
 
-如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。
+如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 

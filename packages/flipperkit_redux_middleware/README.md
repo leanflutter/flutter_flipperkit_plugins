@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.1
+  flipperkit_redux_middleware: ^0.0.2
 ```
 
 You can install packages from the command line:
@@ -41,7 +41,12 @@ void main() async {
     appReducer,
     initialState: AppState(),
     middleware: []
-      ..add(new FlipperReduxMiddleware())
+      ..add(new FlipperReduxMiddleware(
+        // Optional, for filtering action types
+        filter: (actionType) {
+          return actionType.startsWith('\$');
+        }
+      ))
   );
 
   runApp(MyApp(
@@ -55,7 +60,7 @@ void main() async {
 
 ## Discussion
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
+If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flutterdebugger) or my wechat.
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 

@@ -7,13 +7,24 @@ import 'package:uuid/uuid.dart';
 
 class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
   Uuid _uuid = new Uuid();
-
   FlipperReduxInspectorPlugin _flipperReduxInspectorPlugin;
+
+  bool Function(String actionType) filter;
+
+  FlipperKitReduxMiddleware({
+    this.filter,
+  });
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {
+    String actionType = action.runtimeType.toString();
     dynamic prevState = json.encode(store.state);
     next(action);
+    
+    if (filter != null && filter(actionType)) {
+      return;
+    }
+
     dynamic nextState = json.encode(store.state);
 
     if (_flipperReduxInspectorPlugin == null) {
@@ -30,7 +41,7 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
     
     ActionInfo actionInfo = new ActionInfo(
       uniqueId: uniqueId,
-      actionType: action.runtimeType.toString(),
+      actionType: actionType,
       timeStamp: new DateTime.now().millisecondsSinceEpoch,
       payload: payload,
       prevState: prevState,
