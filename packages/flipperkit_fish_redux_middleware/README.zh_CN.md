@@ -21,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_fish_redux_middleware: ^0.0.1
+  flipperkit_fish_redux_middleware: ^0.0.2
 ```
 
 您可以通过命令行安装软件包：
@@ -58,7 +58,12 @@ class ToDoListPage extends Page<PageState, Map<String, dynamic>> {
               }),
           middlewares: <Middleware<PageState>>[
             logMiddleware(tag: 'ToDoListPage'),
-            flipperKitFishReduxMiddleware(),
+            flipperKitFishReduxMiddleware(
+              // 可选，用于过滤 action types
+              filter: (actionType) {
+                return actionType.startsWith('\$');
+              }
+            ),
           ],
         );
 }
@@ -68,7 +73,7 @@ class ToDoListPage extends Page<PageState, Map<String, dynamic>> {
 
 ## 探讨
 
-如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。
+如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
