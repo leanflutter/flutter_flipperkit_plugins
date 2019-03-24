@@ -5,6 +5,8 @@
 
 [English](./README.md) | 简体中文
 
+> `flutter_flipperkit` 已支持全局拦截网络请求（所有基于 `HttpClient` API 的请求均可被拦截），如果你未设置网络插件 `useHttpOverrides` 参数为 false，则无需使用该拦截器。
+
 ## 快速开始
 
 ### 必备条件

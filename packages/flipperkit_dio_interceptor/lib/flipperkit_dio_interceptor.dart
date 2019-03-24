@@ -1,6 +1,5 @@
 library flipperkit_dio_interceptor;
 
-import 'dart:io';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
@@ -51,16 +50,12 @@ class FlipperKitDioInterceptor extends InterceptorsWrapper {
 
   void _reportResponse(Response response) {
     Map<String, dynamic> headers = new Map();
-    for (var key in []
-      ..addAll(HttpHeaders.entityHeaders)
-      ..addAll(HttpHeaders.requestHeaders)
-      ..addAll(HttpHeaders.responseHeaders)) {
-      var value = response.headers.value(key);
-
-      if (value != null && value.isNotEmpty) {
-        headers.putIfAbsent(key, () => value);
+    response.headers.forEach((String name, List<String> values) {
+      if (values != null && values.length > 0) {
+        headers.putIfAbsent(name, () => values.length == 1 ? values[0] : values);
       }
-    }
+    });
+
     String uniqueId = response.request.extra['__uniqueId__'];
     ResponseInfo responseInfo = new ResponseInfo(
       requestId: uniqueId,

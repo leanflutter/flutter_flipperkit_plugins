@@ -5,6 +5,8 @@
 
 English | [简体中文](./README.zh_CN.md)
 
+> `flutter_flipperkit` already supports global interception of network requests (all requests based on `HttpClient` API can be intercepted), if you do not set the network plugin `useHttpOverrides` parameter to false, you do not need to use this interceptor.
+
 ## Getting Started
 
 ### Prerequisites
