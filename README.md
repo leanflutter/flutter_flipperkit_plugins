@@ -17,10 +17,11 @@ These are the available plugins in this repository.
 | [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
 | [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_fish_redux_middleware) |
 | [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
+| [flipperkit_sqflite_driver](./packages/flipperkit_sqflite_driver/) | [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver) |
 
 ## Discussion
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
+If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flutterdebugger) or my wechat.
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 

@@ -1,31 +1,57 @@
-# flutter_flipperkit_plugins
+# flipperkit_sqflite_driver
 
+[![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
-[English](./README.md) | 简体中文
+English | [简体中文](./README.zh_CN.md)
 
-## 简介
+## Getting Started
 
-Plugins for flutter flipperkit.
+### Prerequisites
 
-## 插件
+Before starting make sure you have:
 
-这些是此代码库中的可用插件。
+- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- Installed [flipper-plugin-dbbrowser](https://github.com/blankapp/flipper-plugin-dbbrowser)
+- Installed [sqflite](https://github.com/tekartik/sqflite)
 
-| Plugin | Pub |
-|--------|-----|
-| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
-| [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_fish_redux_middleware) |
-| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
-| [flipperkit_sqflite_driver](./packages/flipperkit_sqflite_driver/) | [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver) |
+### Installation
 
-## 探讨
+Add this to your package's pubspec.yaml file:
 
-如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
+```yaml
+dependencies:
+  flipperkit_sqflite_driver: ^0.0.1
+```
+
+You can install packages from the command line:
+
+```bash
+$ flutter packages get
+```
+
+### Usage
+
+```dart
+import 'package:flipperkit_sqflite_driver/flipperkit_sqflite_driver.dart';
+
+void main() async {
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperDatabaseBrowserPlugin(SqfliteDriver('simple_todo.db')));
+  flipperClient.start();
+
+  runApp(MyApp());
+}
+```
+
+## Discussion
+
+If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
-## 许可证
+## License
 
 ```
 MIT License

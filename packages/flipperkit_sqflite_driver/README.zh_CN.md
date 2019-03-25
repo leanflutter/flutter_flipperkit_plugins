@@ -1,27 +1,53 @@
-# flutter_flipperkit_plugins
+# flipperkit_sqflite_driver
 
+[![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 [English](./README.md) | 简体中文
 
-## 简介
+## 快速开始
 
-Plugins for flutter flipperkit.
+### 必备条件
 
-## 插件
+开始之前确保你已安装：
 
-这些是此代码库中的可用插件。
+- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
+- 已安装 [redux](https://github.com/johnpryan/redux.dart)
 
-| Plugin | Pub |
-|--------|-----|
-| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor) |
-| [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_fish_redux_middleware) |
-| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware) |
-| [flipperkit_sqflite_driver](./packages/flipperkit_sqflite_driver/) | [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver) |
+### 安装
+
+添加以下内容到包的 pubspec.yaml 文件中：
+
+```yaml
+dependencies:
+  flipperkit_sqflite_driver: ^0.0.1
+```
+
+您可以通过命令行安装软件包：
+
+```bash
+$ flutter packages get
+```
+
+### 用法
+
+```dart
+import 'package:flipperkit_sqflite_driver/flipperkit_sqflite_driver.dart';
+
+void main() async {
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperDatabaseBrowserPlugin(SqfliteDriver('simple_todo.db')));
+  flipperClient.start();
+
+  runApp(MyApp());
+}
+```
 
 ## 探讨
 
-如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
+如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
