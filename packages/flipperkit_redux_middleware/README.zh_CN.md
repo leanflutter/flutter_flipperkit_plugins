@@ -21,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.2
+  flipperkit_redux_middleware: ^0.0.3
 ```
 
 您可以通过命令行安装软件包：
