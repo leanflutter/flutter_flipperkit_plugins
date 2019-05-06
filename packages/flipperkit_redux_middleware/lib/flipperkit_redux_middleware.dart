@@ -10,17 +10,25 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
   FlipperReduxInspectorPlugin _flipperReduxInspectorPlugin;
 
   bool Function(String actionType) filter;
+  String Function(dynamic action) getActionType;
 
   FlipperKitReduxMiddleware({
     this.filter,
+    this.getActionType,
   });
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {
-    String actionType = action.runtimeType.toString();
+    String actionType;
     dynamic prevState = json.encode(store.state);
     next(action);
-    
+
+    if (getActionType != null ) {
+      actionType = getActionType(action);
+    } else {
+      actionType = action.runtimeType.toString();
+    }
+
     if (filter != null && filter(actionType)) {
       return;
     }
@@ -38,7 +46,7 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
     try {
        payload = json.encode(action);
     } catch (e) {}
-    
+
     ActionInfo actionInfo = new ActionInfo(
       uniqueId: uniqueId,
       actionType: actionType,
@@ -48,6 +56,8 @@ class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
       nextState: nextState,
     );
 
-    _flipperReduxInspectorPlugin.report(actionInfo);
+    if (_flipperReduxInspectorPlugin != null ) {
+      _flipperReduxInspectorPlugin.report(actionInfo);
+    }
   }
 }
