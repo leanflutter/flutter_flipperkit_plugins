@@ -1,6 +1,6 @@
 name: flipperkit_redux_middleware
 description: flipperkit_redux_middleware
-version: 0.0.2
+version: 0.0.3
 author: JianyingLi <lijy91@foxmail.com>
 homepage: https://github.com/blankapp/flutter_flipperkit_plugins
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_flipperkit: ^0.0.6
+  flutter_flipperkit: ^0.0.10
   redux: ^3.0.0
   uuid: ^2.0.0
 

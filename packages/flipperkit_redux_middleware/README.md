@@ -45,7 +45,11 @@ void main() async {
         // Optional, for filtering action types
         filter: (actionType) {
           return actionType.startsWith('\$');
-        }
+        },
+        // Optional, for get action type
+        getActionType: (action) {
+          return action.toString();
+        },
       ))
   );
 

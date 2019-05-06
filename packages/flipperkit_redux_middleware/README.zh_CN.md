@@ -45,7 +45,11 @@ void main() async {
         // 可选，用于过滤 action types
         filter: (actionType) {
           return actionType.startsWith('\$');
-        }
+        },
+        // 可选，用于获取 action type
+        getActionType: (action) {
+          return action.toString();
+        },
       ))
   );
 
