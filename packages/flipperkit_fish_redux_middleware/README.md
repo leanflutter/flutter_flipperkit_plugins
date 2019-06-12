@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_fish_redux_middleware: ^0.0.2
+  flipperkit_fish_redux_middleware: ^0.0.3
 ```
 
 You can install packages from the command line:
