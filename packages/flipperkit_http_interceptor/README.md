@@ -1,24 +1,63 @@
-# flutter_flipperkit_plugins
+# flipperkit_http_interceptor
 
+[![pub package](https://img.shields.io/pub/v/flipperkit_http_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_http_interceptor)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
 
-## Introduction
+> `flutter_flipperkit` does not support global interception of [http](https://github.com/dart-lang/http) library network requests, please set the network plugin `useHttpOverrides` parameter to `false`.
 
-Plugins for flutter flipperkit.
+## Getting Started
 
-## Plugins
+### Prerequisites
 
-These are the available plugins in this repository.
+Before starting make sure you have:
 
-| Plugin | Pub |
-|--------|-----|
-| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dev/packages/flipperkit_dio_interceptor) |
-| [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dev/packages/flipperkit_fish_redux_middleware) |
-| [flipperkit_http_interceptor](./packages/flipperkit_http_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_http_interceptor.svg)](https://pub.dev/packages/flipperkit_http_interceptor) |
-| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dev/packages/flipperkit_redux_middleware) |
-| [flipperkit_sqflite_driver](./packages/flipperkit_sqflite_driver/) | [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dev/packages/flipperkit_sqflite_driver) |
+- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- Installed [http](https://github.com/dart-lang/http)
+
+### Installation
+
+Add this to your package's pubspec.yaml file:
+
+```yaml
+dependencies:
+  flipperkit_http_interceptor: ^0.0.1
+```
+
+You can install packages from the command line:
+
+```bash
+$ flutter packages get
+```
+
+### Usage
+
+```dart
+void main() {
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // If you use http library, you must set it to false
+    useHttpOverrides: false,
+  ));
+  flipperClient.start();
+
+  runApp(MyApp());
+}
+
+...
+
+```
+
+```dart
+import 'package:flipperkit_http_interceptor/flipperkit_http_interceptor.dart';
+
+void sendRequest() async {
+  var http = new HttpClientWithInterceptor();
+  var response = http.get("https://example.com");
+}
+```
 
 ## Discussion
 

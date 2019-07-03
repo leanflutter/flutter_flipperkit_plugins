@@ -1,24 +1,63 @@
-# flutter_flipperkit_plugins
+# flipperkit_http_interceptor
 
+[![pub package](https://img.shields.io/pub/v/flipperkit_http_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_http_interceptor)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 [English](./README.md) | 简体中文
 
-## 简介
+> `flutter_flipperkit` 暂不支持全局拦截 [http](https://github.com/dart-lang/http) 库的网络请求，请设置网络插件 `useHttpOverrides` 参数为 `false`。
 
-Plugins for flutter flipperkit.
+## 快速开始
 
-## 插件
+### 必备条件
 
-这些是此代码库中的可用插件。
+开始之前确保你已安装：
 
-| Plugin | Pub |
-|--------|-----|
-| [flipperkit_dio_interceptor](./packages/flipperkit_dio_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dev/packages/flipperkit_dio_interceptor) |
-| [flipperkit_fish_redux_middleware](./packages/flipperkit_fish_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_fish_redux_middleware.svg)](https://pub.dev/packages/flipperkit_fish_redux_middleware) |
-| [flipperkit_http_interceptor](./packages/flipperkit_http_interceptor/) | [![pub package](https://img.shields.io/pub/v/flipperkit_http_interceptor.svg)](https://pub.dev/packages/flipperkit_http_interceptor) |
-| [flipperkit_redux_middleware](./packages/flipperkit_redux_middleware/) | [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dev/packages/flipperkit_redux_middleware) |
-| [flipperkit_sqflite_driver](./packages/flipperkit_sqflite_driver/) | [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dev/packages/flipperkit_sqflite_driver) |
+- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [http](https://github.com/dart-lang/http)
+
+### 安装
+
+添加以下内容到包的 pubspec.yaml 文件中：
+
+```yaml
+dependencies:
+  flipperkit_http_interceptor: ^0.0.1
+```
+
+您可以通过命令行安装软件包：
+
+```bash
+$ flutter packages get
+```
+
+### 用法
+
+```dart
+void main() {
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // If you use http library, you must set it to false
+    useHttpOverrides: false,
+  ));
+  flipperClient.start();
+
+  runApp(MyApp());
+}
+
+...
+
+```
+
+```dart
+import 'package:flipperkit_http_interceptor/flipperkit_http_interceptor.dart';
+
+void sendRequest() async {
+  var http = new HttpClientWithInterceptor();
+  var response = http.get("https://example.com");
+}
+```
 
 ## 探讨
 
