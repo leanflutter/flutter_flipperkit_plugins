@@ -55,7 +55,7 @@ class SqfliteDriver implements DatabaseDriver {
     if (_db == null || !_db.isOpen) {
       String path = await getDatabasesPath();
       _db = null;
-      _db = await openDatabase('$path/$name');
+      _db = await openDatabase('$path/$name', singleInstance: false);
     }
     return _db;
   }
