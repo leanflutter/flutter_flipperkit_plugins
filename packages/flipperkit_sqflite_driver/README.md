@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_sqflite_driver: ^0.0.1
+  flipperkit_sqflite_driver: ^0.0.2
 ```
 
 You can install packages from the command line:

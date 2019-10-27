@@ -21,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_sqflite_driver: ^0.0.1
+  flipperkit_sqflite_driver: ^0.0.2
 ```
 
 您可以通过命令行安装软件包：
