@@ -73,7 +73,7 @@ class ToDoListPage extends Page<PageState, Map<String, dynamic>> {
 
 ## Discussion
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flutterdebugger) or my wechat.
+If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) or my wechat.
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 

@@ -22,7 +22,7 @@ Plugins for flutter flipperkit.
 
 ## 探讨
 
-如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
+如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flipper4flutter) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
