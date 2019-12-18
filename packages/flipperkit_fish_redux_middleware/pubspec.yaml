@@ -1,6 +1,6 @@
 name: flipperkit_fish_redux_middleware
 description: flipperkit_fish_redux_middleware
-version: 0.0.3
+version: 0.0.4
 author: JianyingLi <lijy91@foxmail.com>
 homepage: https://github.com/blankapp/flutter_flipperkit_plugins
 
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_flipperkit: ^0.0.6
-  fish_redux: ^0.2.2
+  flutter_flipperkit: ^0.0.21
+  fish_redux: ^0.3.1
   uuid: ^2.0.0
 
 dev_dependencies:
