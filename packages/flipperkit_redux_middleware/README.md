@@ -1,7 +1,6 @@
 # flipperkit_redux_middleware
 
 [![pub package](https://img.shields.io/pub/v/flipperkit_redux_middleware.svg)](https://pub.dartlang.org/packages/flipperkit_redux_middleware)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
 
@@ -21,7 +20,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.3
+  flipperkit_redux_middleware: ^0.0.4
 ```
 
 You can install packages from the command line:
@@ -61,12 +60,6 @@ void main() async {
 ...
 
 ```
-
-## Discussion
-
-If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) or my wechat.
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
 ## License
 
