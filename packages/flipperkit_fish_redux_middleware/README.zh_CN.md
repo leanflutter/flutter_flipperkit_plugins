@@ -137,12 +137,6 @@ EffectMiddleware<T> _pageAnalyticsMiddleware<T>({String tag = 'redux'}) {
 
 > 示例: https://github.com/blankapp/flutter_flipperkit_examples/tree/master/fish_redux_example
 
-## 探讨
-
-如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flipper4flutter) 或我的微信进行讨论。
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
-
 ## 许可证
 
 ```
