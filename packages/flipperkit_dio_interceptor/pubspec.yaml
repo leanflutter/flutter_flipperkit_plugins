@@ -1,6 +1,6 @@
 name: flipperkit_dio_interceptor
 description: flipperkit_dio_interceptor
-version: 0.0.2
+version: 0.0.3
 author: JianyingLi <lijy91@foxmail.com>
 homepage: https://github.com/blankapp/flutter_flipperkit_plugins
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_flipperkit: ^0.0.17
+  flutter_flipperkit: ^0.0.23
   dio: ^2.0.14
   uuid: ^2.0.0
 

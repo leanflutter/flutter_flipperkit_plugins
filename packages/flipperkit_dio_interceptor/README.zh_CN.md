@@ -1,7 +1,6 @@
 # flipperkit_dio_interceptor
 
 [![pub package](https://img.shields.io/pub/v/flipperkit_dio_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_dio_interceptor)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 [English](./README.md) | 简体中文
 
@@ -22,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_dio_interceptor: ^0.0.2
+  flipperkit_dio_interceptor: ^0.0.3
 ```
 
 您可以通过命令行安装软件包：
@@ -43,12 +42,6 @@ void sendRequest() async {
   Response response = dio.get("https://example.com");
 }
 ```
-
-## 探讨
-
-如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flipper4flutter) 或我的微信进行讨论。
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
 ## 许可证
 
