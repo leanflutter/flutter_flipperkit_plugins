@@ -1,7 +1,6 @@
 # flipperkit_sqflite_driver
 
 [![pub package](https://img.shields.io/pub/v/flipperkit_sqflite_driver.svg)](https://pub.dartlang.org/packages/flipperkit_sqflite_driver)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
 
@@ -44,12 +43,6 @@ void main() async {
   runApp(MyApp());
 }
 ```
-
-## Discussion
-
-If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
 ## License
 
