@@ -1,7 +1,6 @@
 # flipperkit_http_interceptor
 
 [![pub package](https://img.shields.io/pub/v/flipperkit_http_interceptor.svg)](https://pub.dartlang.org/packages/flipperkit_http_interceptor)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
 
@@ -58,12 +57,6 @@ void sendRequest() async {
   var response = http.get("https://example.com");
 }
 ```
-
-## Discussion
-
-If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) or my wechat.
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
 ## License
 
