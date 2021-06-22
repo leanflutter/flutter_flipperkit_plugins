@@ -5,66 +5,67 @@ import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 
 class FlipperKitDioInterceptor extends InterceptorsWrapper {
-  Uuid _uuid = new Uuid();
-  FlipperNetworkPlugin _flipperNetworkPlugin;
+  final _uuid = Uuid();
+  final _flipperNetworkPlugin = FlipperClient.getDefault()
+      .getPlugin(FlipperNetworkPlugin.ID) as FlipperNetworkPlugin?;
 
-  FlipperKitDioInterceptor() {
-    _flipperNetworkPlugin =
-        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
+  @override
+  void onRequest(
+      RequestOptions options,
+      RequestInterceptorHandler handler,
+      ) async {
+    _reportRequest(options);
+    handler.next(options);
   }
 
   @override
-  onRequest(RequestOptions options) {
-    this._reportRequest(options);
-    return options;
+  void onResponse(
+      Response response,
+      ResponseInterceptorHandler handler,
+      ) async {
+    _reportResponse(response);
+    handler.next(response);
   }
 
   @override
-  onResponse(Response response) {
-    this._reportResponse(response);
-    return response;
-  }
-
-  @override
-  onError(DioError err) {
+  void onError(
+      DioError err,
+      ErrorInterceptorHandler handler,
+      ) async {
     if (err.response != null) {
-      this._reportResponse(err.response);
+      _reportResponse(err.response!);
     }
-    return err;
+    handler.next(err);
   }
 
   void _reportRequest(RequestOptions options) {
-    String uniqueId = _uuid.v4();
-    options.extra.putIfAbsent("__uniqueId__", () => uniqueId);
-    RequestInfo requestInfo = new RequestInfo(
+    var uniqueId = _uuid.v4();
+
+    options.extra.putIfAbsent('__uniqueId__', () => uniqueId);
+
+    var requestInfo = RequestInfo(
       requestId: uniqueId,
-      timeStamp: new DateTime.now().millisecondsSinceEpoch,
+      timeStamp: DateTime.now().millisecondsSinceEpoch,
       uri: '${options.baseUrl}${options.path}',
       headers: options.headers,
       method: options.method,
       body: options.data,
     );
 
-    _flipperNetworkPlugin.reportRequest(requestInfo);
+    _flipperNetworkPlugin?.reportRequest(requestInfo);
   }
 
   void _reportResponse(Response response) {
-    Map<String, dynamic> headers = new Map();
-    response.headers.forEach((String name, List<String> values) {
-      if (values != null && values.length > 0) {
-        headers.putIfAbsent(name, () => values.length == 1 ? values[0] : values);
-      }
-    });
+    var uniqueId = response.requestOptions.extra['__uniqueId__'];
 
-    String uniqueId = response.request.extra['__uniqueId__'];
-    ResponseInfo responseInfo = new ResponseInfo(
+    var responseInfo = ResponseInfo(
       requestId: uniqueId,
-      timeStamp: new DateTime.now().millisecondsSinceEpoch,
+      timeStamp: DateTime.now().millisecondsSinceEpoch,
       statusCode: response.statusCode,
-      headers: headers,
+      headers: response.headers.map,
       body: response.data,
     );
 
-    _flipperNetworkPlugin.reportResponse(responseInfo);
+    _flipperNetworkPlugin?.reportResponse(responseInfo);
   }
 }
