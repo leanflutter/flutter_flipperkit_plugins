@@ -6,58 +6,56 @@ import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 import 'package:uuid/uuid.dart';
 
 class FlipperKitReduxMiddleware<State> implements MiddlewareClass<State> {
-  Uuid _uuid = new Uuid();
-  FlipperReduxInspectorPlugin _flipperReduxInspectorPlugin;
+  final _uuid = Uuid();
+  FlipperReduxInspectorPlugin? _flipperReduxInspectorPlugin;
 
-  bool Function(String actionType) filter;
+  bool Function(String actionType)? filter;
   String Function(dynamic action) getActionType;
+  dynamic Function(State state) stateConverter;
+  dynamic Function(dynamic payload) payloadConverter;
 
   FlipperKitReduxMiddleware({
     this.filter,
-    this.getActionType,
+    this.getActionType = _defaultActionTypeConverter,
+    this.stateConverter = jsonEncode,
+    this.payloadConverter = jsonEncode,
   });
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {
-    String actionType;
-    dynamic prevState = json.encode(store.state);
+    var prevState = stateConverter(store.state);
     next(action);
 
-    if (getActionType != null ) {
-      actionType = getActionType(action);
-    } else {
-      actionType = action.runtimeType.toString();
-    }
+    var actionType = getActionType(action);
 
-    if (filter != null && filter(actionType)) {
+    // Action is filtered, Do not report
+    if (filter?.call(actionType) == true) {
       return;
     }
 
-    dynamic nextState = json.encode(store.state);
+    var nextState = stateConverter(store.state);
 
-    if (_flipperReduxInspectorPlugin == null) {
-      _flipperReduxInspectorPlugin =
-          FlipperClient.getDefault().getPlugin("ReduxInspector");
-    }
+    tryInitializingPlugin();
 
-    String uniqueId = _uuid.v4();
+    var payload = payloadConverter(action);
 
-    var payload;
-    try {
-       payload = json.encode(action);
-    } catch (e) {}
-
-    ActionInfo actionInfo = new ActionInfo(
-      uniqueId: uniqueId,
+    var actionInfo = ActionInfo(
+      uniqueId: _uuid.v4(),
       actionType: actionType,
-      timeStamp: new DateTime.now().millisecondsSinceEpoch,
+      timeStamp: DateTime.now().millisecondsSinceEpoch,
       payload: payload,
       prevState: prevState,
       nextState: nextState,
     );
 
-    if (_flipperReduxInspectorPlugin != null ) {
-      _flipperReduxInspectorPlugin.report(actionInfo);
-    }
+    _flipperReduxInspectorPlugin?.report(actionInfo);
   }
+
+  void tryInitializingPlugin() {
+    _flipperReduxInspectorPlugin ??=
+        FlipperClient.getDefault().getPlugin('flipper-plugin-reduxinspector')
+            as FlipperReduxInspectorPlugin?;
+  }
+
+  static String _defaultActionTypeConverter(action) => action.toString();
 }
