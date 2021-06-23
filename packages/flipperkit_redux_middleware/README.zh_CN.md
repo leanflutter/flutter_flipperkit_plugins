@@ -10,8 +10,8 @@
 
 开始之前确保你已安装：
 
-- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- 已安装 [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
+- 已安装 [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
+- 已安装 [flipper-plugin-reduxinspector](https://github.com/leanflutter/flipper-plugin-reduxinspector)
 - 已安装 [redux](https://github.com/johnpryan/redux.dart)
 
 ### 安装
@@ -20,7 +20,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.4
+  flipperkit_redux_middleware: ^0.1.0
 ```
 
 您可以通过命令行安装软件包：

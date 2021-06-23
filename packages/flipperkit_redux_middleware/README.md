@@ -10,8 +10,8 @@ English | [简体中文](./README.zh_CN.md)
 
 Before starting make sure you have:
 
-- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- Installed [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
+- Installed [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
+- Installed [flipper-plugin-reduxinspector](https://github.com/leanflutter/flipper-plugin-reduxinspector)
 - Installed [redux](https://github.com/johnpryan/redux.dart)
 
 ### Installation
@@ -20,7 +20,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_redux_middleware: ^0.0.4
+  flipperkit_redux_middleware: ^0.1.0
 ```
 
 You can install packages from the command line:
