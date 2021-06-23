@@ -12,7 +12,7 @@
 
 开始之前确保你已安装：
 
-- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
 - 已安装 [http](https://github.com/dart-lang/http)
 
 ### 安装

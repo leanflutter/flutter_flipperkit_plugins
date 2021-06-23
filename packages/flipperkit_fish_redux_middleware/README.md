@@ -10,8 +10,8 @@ English | [简体中文](./README.zh_CN.md)
 
 Before starting make sure you have:
 
-- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- Installed [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
+- Installed [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
+- Installed [flipper-plugin-reduxinspector](https://github.com/leanflutter/flipper-plugin-reduxinspector)
 - Installed [fish-redux](https://github.com/alibaba/fish-redux)
 
 ### Installation
@@ -135,7 +135,7 @@ EffectMiddleware<T> _pageAnalyticsMiddleware<T>({String tag = 'redux'}) {
 }
 ```
 
-> Example: https://github.com/blankapp/flutter_flipperkit_examples/tree/master/fish_redux_example
+> Example: https://github.com/leanflutter/flutter_flipperkit_examples/tree/master/fish_redux_example
 
 ## License
 

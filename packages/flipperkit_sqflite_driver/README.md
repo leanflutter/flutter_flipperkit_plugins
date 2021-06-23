@@ -10,8 +10,8 @@ English | [简体中文](./README.zh_CN.md)
 
 Before starting make sure you have:
 
-- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- Installed [flipper-plugin-dbbrowser](https://github.com/blankapp/flipper-plugin-dbbrowser)
+- Installed [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
+- Installed [flipper-plugin-dbbrowser](https://github.com/leanflutter/flipper-plugin-dbbrowser)
 - Installed [sqflite](https://github.com/tekartik/sqflite)
 
 ### Installation

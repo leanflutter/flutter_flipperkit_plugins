@@ -10,8 +10,8 @@
 
 开始之前确保你已安装：
 
-- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
-- 已安装 [flipper-plugin-reduxinspector](https://github.com/blankapp/flipper-plugin-reduxinspector)
+- 已安装 [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
+- 已安装 [flipper-plugin-reduxinspector](https://github.com/leanflutter/flipper-plugin-reduxinspector)
 - 已安装 [fish-redux](https://github.com/alibaba/fish-redux)
 
 ### 安装
@@ -135,7 +135,7 @@ EffectMiddleware<T> _pageAnalyticsMiddleware<T>({String tag = 'redux'}) {
 }
 ```
 
-> 示例: https://github.com/blankapp/flutter_flipperkit_examples/tree/master/fish_redux_example
+> 示例: https://github.com/leanflutter/flutter_flipperkit_examples/tree/master/fish_redux_example
 
 ## 许可证
 
