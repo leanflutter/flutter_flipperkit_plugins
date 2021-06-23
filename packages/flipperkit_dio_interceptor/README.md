@@ -12,7 +12,7 @@ English | [简体中文](./README.zh_CN.md)
 
 Before starting make sure you have:
 
-- Installed [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- Installed [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
 - Installed [dio](https://github.com/flutterchina/dio)
 
 ### Installation
@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flipperkit_dio_interceptor: ^0.0.3
+  flipperkit_dio_interceptor: ^0.1.0
 ```
 
 You can install packages from the command line:

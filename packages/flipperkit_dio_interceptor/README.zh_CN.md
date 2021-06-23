@@ -12,7 +12,7 @@
 
 开始之前确保你已安装：
 
-- 已安装 [flutter_flipperkit](https://github.com/blankapp/flutter_flipperkit)
+- 已安装 [flutter_flipperkit](https://github.com/leanflutter/flutter_flipperkit)
 - 已安装 [dio](https://github.com/flutterchina/dio)
 
 ### 安装
@@ -21,7 +21,7 @@
 
 ```yaml
 dependencies:
-  flipperkit_dio_interceptor: ^0.0.3
+  flipperkit_dio_interceptor: ^0.1.0
 ```
 
 您可以通过命令行安装软件包：
