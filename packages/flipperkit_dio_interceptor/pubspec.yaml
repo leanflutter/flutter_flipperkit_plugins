@@ -1,7 +1,7 @@
 name: flipperkit_dio_interceptor
 description: flipperkit_dio_interceptor
 version: 0.1.0
-author: JianyingLi <lijy91@foxmail.com>
+author: LiJianying <lijy91@foxmail.com>
 homepage: https://github.com/leanflutter/flutter_flipperkit_plugins
 
 environment:

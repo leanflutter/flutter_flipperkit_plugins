@@ -1,7 +1,7 @@
 name: flipperkit_sqflite_driver
 description: flipperkit_sqflite_driver
 version: 0.0.2
-author: JianyingLi <lijy91@foxmail.com>
+author: LiJianying <lijy91@foxmail.com>
 homepage: https://github.com/leanflutter/flutter_flipperkit_plugins
 
 environment:
