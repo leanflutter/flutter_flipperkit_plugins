@@ -1,18 +1,18 @@
 name: flipperkit_sqflite_driver
 description: flipperkit_sqflite_driver
-version: 0.0.2
+version: 0.1.0
 author: LiJianying <lijy91@foxmail.com>
 homepage: https://github.com/leanflutter/flutter_flipperkit_plugins
 
 environment:
-  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  sdk: ">=2.12.0-0.0 <3.0.0"
   flutter: ">=0.1.4 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_flipperkit: ^0.0.7
-  sqflite: ^1.1.0
+  flutter_flipperkit: ^0.0.27
+  sqflite: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:

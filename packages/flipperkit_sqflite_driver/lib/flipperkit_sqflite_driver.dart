@@ -5,79 +5,133 @@ import 'package:sqflite/sqflite.dart';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 
 class SqfliteDriverTableQueryer implements DatabaseDriverTableQueryer {
-  Database _db;
-  String _table;
+  const SqfliteDriverTableQueryer._({
+    required this.db,
+    required this.table,
+    this.verbose = true,
+  });
 
-  void setDatabase(Database db) {
-    this._db = db;
-  }
+  static SqfliteDriverTableQueryer _singleton({
+    required Database db,
+    required String table,
+    bool verbose = true,
+  }) =>
+      SqfliteDriverTableQueryer._(db: db, table: table, verbose: verbose);
 
-  void setTable(String table) {
-    this._table = table;
-  }
+  factory SqfliteDriverTableQueryer.delegate({
+    required Database db,
+    required String table,
+    bool verbose = true,
+  }) =>
+      _singleton(db: db, table: table, verbose: verbose);
+
+  final Database db;
+  final String table;
+  final bool verbose;
 
   @override
   Future<List<Map<String, dynamic>>> info() async {
-    List<Map<String, dynamic>> tableInfo = await _db.rawQuery('PRAGMA table_info($_table)');
+    final tableInfo = await db.rawQuery('PRAGMA table_info($table)');
 
-    _db.close();
-    return tableInfo;
+    db.close();
+    return Future.value(tableInfo);
   }
 
   @override
   Future<List<Map<String, dynamic>>> count() async {
-    List<Map<String, dynamic>> records = await _db.rawQuery('SELECT count(*) as count FROM $_table');
+    final records = await db.rawQuery('SELECT count(*) as count FROM $table');
 
-    _db.close();
-    return records;
+    db.close();
+    return Future.value(records);
   }
 
   @override
-  Future<List<Map<String, dynamic>>> get({ int limit = 20, int offset = 0}) async {
-    String sqlString = 'SELECT * FROM $_table LIMIT $limit OFFSET $offset';
-    print(sqlString);
-    List<Map<String, dynamic>> records = await _db.rawQuery(sqlString);
+  Future<List<Map<String, dynamic>>> get(
+      {int limit = 20, int offset = 0}) async {
+    String sqlString = 'SELECT * FROM $table LIMIT $limit OFFSET $offset';
+    if (verbose) {
+      print(sqlString);
+    }
 
-    _db.close();
-    return records;
+    final records = await db.rawQuery(sqlString);
+
+    db.close();
+    return Future.value(records);
   }
 }
 
 class SqfliteDriver implements DatabaseDriver {
-  Database _db;
-  SqfliteDriverTableQueryer _tableQueryer;
+  final String fileName;
+  final String? path;
+  final bool verbose;
 
-  final String name;
-
-  SqfliteDriver(this.name);
-
-  Future<Database> db() async {
-    if (_db == null || !_db.isOpen) {
-      String path = await getDatabasesPath();
-      _db = null;
-      _db = await openDatabase('$path/$name', singleInstance: false);
-    }
-    return _db;
-  }
+  const SqfliteDriver(
+    this.fileName, {
+    this.path,
+    this.verbose = true,
+  });
 
   @override
-  Future<SqfliteDriverTableQueryer> table(String name) async{
-      Database db = await this.db();
-    if (_tableQueryer == null) {
-      _tableQueryer = new SqfliteDriverTableQueryer();
-    }
-    _tableQueryer.setDatabase(db);
-    _tableQueryer.setTable(name);
-    return _tableQueryer;
+  Future<SqfliteDriverTableQueryer> table(String name) async {
+    return DatabaseHandler.delegate(name: fileName, path: path)
+        .initialize()
+        .then(
+          (db) => SqfliteDriverTableQueryer.delegate(
+            db: db,
+            table: name,
+            verbose: verbose,
+          ),
+        );
   }
 
   @override
   Future<List<Map<String, dynamic>>> tables() async {
-    Database db = await this.db();
+    final delegate = DatabaseHandler.delegate(name: fileName, path: path);
+    await delegate.initialize().then((db) async => await db.rawQuery(
+          'SELECT * FROM sqlite_master',
+        ));
 
-    List<Map<String, dynamic>> records = await db.rawQuery('SELECT * FROM sqlite_master');
+    final records =
+        await delegate.dbInstance.rawQuery('SELECT * FROM sqlite_master');
+    await delegate.dbInstance.close();
 
-    _db.close();
     return records;
+  }
+}
+
+class DatabaseHandler {
+  DatabaseHandler._({required this.path, required this.name});
+
+  static DatabaseHandler _singleton({
+    required String name,
+    String? path,
+  }) =>
+      DatabaseHandler._(name: name, path: path);
+
+  factory DatabaseHandler.delegate({
+    required String name,
+    String? path,
+  }) =>
+      _singleton(name: name, path: path);
+
+  final String name;
+  final String? path;
+
+  Future<String> get pathOrDefault async => path ?? await getDatabasesPath();
+
+  Database get dbInstance => _database;
+  late Database _database;
+  bool _firstInitialization = true;
+
+  Future<Database> initialize() async {
+    if (_firstInitialization || _database.isOpen != true) {
+      _database = await openDatabase(
+        '${await pathOrDefault}/$name',
+        singleInstance: false,
+      );
+      _firstInitialization = false;
+    }
+
+    return _database;
   }
 }
