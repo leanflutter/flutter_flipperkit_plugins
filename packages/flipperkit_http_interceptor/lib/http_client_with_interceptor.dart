@@ -19,78 +19,85 @@ class HttpClientWithInterceptor implements http.BaseClient {
   }
 
   @override
-  Future<http.Response> delete(url, {Map<String, String> headers}) async {
+  Future<http.Response> delete(Uri url,
+      {Object? body, Encoding? encoding, Map<String, String>? headers}) async {
     return _withInterceptor(
       method: 'DELETE',
-      url: url,
+      url: url.toString(),
       headers: headers,
       sendRequest: () => _client.delete(url, headers: headers),
     );
   }
 
   @override
-  Future<http.Response> get(url, {Map<String, String> headers}) {
+  Future<http.Response> get(url, {Map<String, String>? headers}) {
     return _withInterceptor(
       method: 'GET',
-      url: url,
+      url: url.toString(),
       headers: headers,
       sendRequest: () => _client.get(url, headers: headers),
     );
   }
 
   @override
-  Future<http.Response> head(url, {Map<String, String> headers}) {
+  Future<http.Response> head(url, {Map<String, String>? headers}) {
     return _withInterceptor(
       method: 'HEAD',
-      url: url,
+      url: url.toString(),
       headers: headers,
       sendRequest: () => _client.head(url, headers: headers),
     );
   }
 
   @override
-  Future<http.Response> patch(url, {Map<String, String> headers, body, Encoding encoding}) {
+  Future<http.Response> patch(url,
+      {Map<String, String>? headers, body, Encoding? encoding}) {
     return _withInterceptor(
       method: 'PATCH',
-      url: url,
+      url: url.toString(),
       headers: headers,
       body: body,
       encoding: encoding,
-      sendRequest: () => _client.patch(url, headers: headers, body: body, encoding: encoding),
+      sendRequest: () =>
+          _client.patch(url, headers: headers, body: body, encoding: encoding),
     );
   }
 
   @override
-  Future<http.Response> post(url, {Map<String, String> headers, body, Encoding encoding}) {
+  Future<http.Response> post(url,
+      {Map<String, String>? headers, body, Encoding? encoding}) {
     return _withInterceptor(
       method: 'POST',
-      url: url,
+      url: url.toString(),
       headers: headers,
       body: body,
       encoding: encoding,
-      sendRequest: () => _client.post(url, headers: headers, body: body, encoding: encoding),
+      sendRequest: () =>
+          _client.post(url, headers: headers, body: body, encoding: encoding),
     );
   }
 
   @override
-  Future<http.Response> put(url, {Map<String, String> headers, body, Encoding encoding}) {
+  Future<http.Response> put(Uri url,
+      {Map<String, String>? headers, body, Encoding? encoding}) {
     return _withInterceptor(
       method: 'PUT',
-      url: url,
+      url: url.toString(),
       headers: headers,
       body: body,
       encoding: encoding,
-      sendRequest: () => _client.put(url, headers: headers, body: body, encoding: encoding),
+      sendRequest: () =>
+          _client.put(url, headers: headers, body: body, encoding: encoding),
     );
   }
 
   @override
-  Future<String> read(url, {Map<String, String> headers}) {
+  Future<String> read(url, {Map<String, String>? headers}) {
     return _client.read(url, headers: headers);
   }
 
   @override
-  Future<Uint8List> readBytes(url, {Map<String, String> headers}) {
+  Future<Uint8List> readBytes(url, {Map<String, String>? headers}) {
     return _client.readBytes(url, headers: headers);
   }
 
@@ -100,12 +107,12 @@ class HttpClientWithInterceptor implements http.BaseClient {
   }
 
   Future<http.Response> _withInterceptor({
-    String method, 
-    String url,
-    Map<String, String> headers, 
-    body, 
-    Encoding encoding,
-    Future<http.Response> Function() sendRequest,
+    String? method,
+    String? url,
+    Map<String, String>? headers,
+    body,
+    Encoding? encoding,
+    required Future<http.Response> Function() sendRequest,
   }) async {
     String requestId = _uuid.v4();
     _reportRequest(
@@ -124,12 +131,13 @@ class HttpClientWithInterceptor implements http.BaseClient {
     return response;
   }
 
-  Future<bool> _reportRequest(requestId, {
-    String method, 
-    String url,
-    Map<String, String> headers, 
-    body, 
-    Encoding encoding,
+  Future<bool> _reportRequest(
+    requestId, {
+    String? method,
+    String? url,
+    Map<String, String>? headers,
+    body,
+    Encoding? encoding,
   }) async {
     RequestInfo requestInfo = new RequestInfo(
       requestId: requestId,
@@ -140,11 +148,12 @@ class HttpClientWithInterceptor implements http.BaseClient {
       body: body,
     );
 
-    FlipperNetworkPlugin _flipperNetworkPlugin =
-        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
+    final FlipperNetworkPlugin? _flipperNetworkPlugin =
+        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID)
+            as FlipperNetworkPlugin;
 
     if (_flipperNetworkPlugin != null) {
-      _flipperNetworkPlugin?.reportRequest(requestInfo);
+      _flipperNetworkPlugin.reportRequest(requestInfo);
     }
     return true;
   }
@@ -158,11 +167,12 @@ class HttpClientWithInterceptor implements http.BaseClient {
       body: response.body,
     );
 
-    FlipperNetworkPlugin _flipperNetworkPlugin =
-        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
+    final FlipperNetworkPlugin? _flipperNetworkPlugin =
+        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID)
+            as FlipperNetworkPlugin;
 
     if (_flipperNetworkPlugin != null) {
-      _flipperNetworkPlugin?.reportResponse(responseInfo);
+      _flipperNetworkPlugin.reportResponse(responseInfo);
     }
     return true;
   }
