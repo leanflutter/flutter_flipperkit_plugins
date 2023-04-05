@@ -1,6 +1,6 @@
 name: flipperkit_http_interceptor
 description: flipperkit_http_interceptor
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/leanflutter/flutter_flipperkit_plugins
 
 environment:
